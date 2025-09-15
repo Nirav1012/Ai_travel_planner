@@ -21,23 +21,48 @@ https://ai-travel-guide.streamlit.app
 ## Screenshots
 "C:\Users\Asus\OneDrive\Pictures\Screenshots\Screenshot 2025-09-16 005628.png"
 
-## code
-def generate_itinerary(destination, budget, days):
-    activities = ["Sightseeing", "Local Food", "Adventure", "Relaxation", "Cultural Experience"]
+## code starts from here
+import streamlit as st
+
+# Title
+st.title("AI Travel Planner ✈️")
+
+# User Inputs
+destination = st.text_input("Enter your destination:")
+budget = st.number_input("Enter your budget (in USD):", min_value=100, step=50)
+days = st.number_input("Number of days:", min_value=1, step=1)
+
+# Travel Style Selection
+style = st.selectbox(
+    "Choose your travel style:",
+    ["Adventure", "Relaxation", "Culture", "Foodie", "Mixed"]
+)
+
+# Activity presets for each style
+activities_dict = {
+    "Adventure": ["Hiking", "Rafting", "Wildlife Safari", "Camping", "Zipline"],
+    "Relaxation": ["Beach Day", "Spa", "Resort Stay", "Leisure Walk", "Sunset View"],
+    "Culture": ["Museum Visit", "Temple Tour", "Historical Walk", "Art Gallery", "Local Market"],
+    "Foodie": ["Street Food Tour", "Fine Dining", "Local Cafe", "Cooking Class", "Winery Visit"],
+    "Mixed": ["Sightseeing", "Local Food", "Adventure", "Relaxation", "Cultural Experience"]
+}
+
+# Generate itinerary
+def generate_itinerary(destination, budget, days, style):
+    activities = activities_dict[style]
     itinerary = {}
     for day in range(1, days + 1):
-        activity = activities[day % len(activities)]
+        activity = activities[(day - 1) % len(activities)]
         itinerary[f"Day {day}"] = f"{activity} in {destination}"
     return itinerary
 
 # Button to generate plan
 if st.button("Generate Itinerary"):
     if destination and budget and days:
-        st.subheader(f"Your {days}-Day Itinerary for {destination} 🗺️")
-        itinerary = generate_itinerary(destination, budget, days)
+        st.subheader(f"Your {days}-Day {style} Trip to {destination} 🗺️")
+        itinerary = generate_itinerary(destination, budget, days, style)
         for day, plan in itinerary.items():
             st.write(f"**{day}:** {plan}")
     else:
         st.warning("Please fill all inputs.")
-
 
