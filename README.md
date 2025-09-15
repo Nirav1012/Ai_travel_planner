@@ -16,10 +16,10 @@ AI-powered planner that generates a personalized itinerary based on destination,
 Python, Streamlit, (APIs in next version)
 
 ## Demo
-http://localhost:8501/
+https://ai-travel-guide.streamlit.app
 
 ## Screenshots
-<img width="1222" height="784" alt="Screenshot 2025-09-15 162833" src="https://github.com/user-attachments/assets/af7cbee3-bc9e-4120-9638-f6680325e6fc" />
+
 
 ## code
 def generate_itinerary(destination, budget, days):
