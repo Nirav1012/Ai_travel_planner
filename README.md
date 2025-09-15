@@ -19,7 +19,7 @@ Python, Streamlit, (APIs in next version)
 https://ai-travel-guide.streamlit.app
 
 ## Screenshots
-
+"C:\Users\Asus\OneDrive\Pictures\Screenshots\Screenshot 2025-09-16 005628.png"
 
 ## code
 def generate_itinerary(destination, budget, days):
