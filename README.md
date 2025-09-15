@@ -21,3 +21,23 @@ http://localhost:8501/
 ## Screenshots
 <img width="1222" height="784" alt="Screenshot 2025-09-15 162833" src="https://github.com/user-attachments/assets/af7cbee3-bc9e-4120-9638-f6680325e6fc" />
 
+## code
+def generate_itinerary(destination, budget, days):
+    activities = ["Sightseeing", "Local Food", "Adventure", "Relaxation", "Cultural Experience"]
+    itinerary = {}
+    for day in range(1, days + 1):
+        activity = activities[day % len(activities)]
+        itinerary[f"Day {day}"] = f"{activity} in {destination}"
+    return itinerary
+
+# Button to generate plan
+if st.button("Generate Itinerary"):
+    if destination and budget and days:
+        st.subheader(f"Your {days}-Day Itinerary for {destination} 🗺️")
+        itinerary = generate_itinerary(destination, budget, days)
+        for day, plan in itinerary.items():
+            st.write(f"**{day}:** {plan}")
+    else:
+        st.warning("Please fill all inputs.")
+
+
